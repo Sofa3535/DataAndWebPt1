@@ -1,0 +1,23 @@
+dataSource.read('fruits', function(err, fruits) {
+  // Throw any errors we recieve
+  if(err) throw(err);
+  // serve the page
+  serve(`
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>Fruits</title>
+        </head>
+      <body>
+        <h1>Fruits</h1>
+        <ul>
+          ${
+            fruits.map(function(fruit){
+              return `<li>${fruit.name}</li>`;
+            }).join("")
+          }
+        </ul>
+      </body>
+    </html>
+  `);
+});
